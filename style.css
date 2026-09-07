@@ -1,0 +1,2850 @@
+:root{
+  --bg:#171711;
+  --panel:#242218;
+  --panel-alt:#2d2a1e;
+
+  --border:#665b3c;
+  --border-soft:#463f2b;
+  --border-bright:#9b8448;
+
+  --wood-dark:#18170f;
+  --wood:#29261b;
+  --wood-light:#3a3524;
+
+  --green:#526b45;
+  --green-dark:#354832;
+  --green-deep:#273526;
+  --green-light:#789162;
+  --green-pale:#d6dcc6;
+
+  --gold:#c2a45c;
+  --gold-dark:#806a37;
+  --gold-light:#dfc77e;
+  --gold-pale:#f0e4bb;
+
+  --magic:#6fa9c7;
+  --magic-dark:#3f708b;
+  --magic-light:#9bd2e6;
+
+  --red:#9a5447;
+  --red-dark:#633a32;
+
+  --text:#e4dcc5;
+  --text-light:#b6ad92;
+  --grey:#89816d;
+  --grey-dim:#625c4c;
+
+  --white:#f5efdd;
+
+  --live:#79a866;
+  --cached:#b58a4c;
+
+  --radius:6px;
+  --radius-small:4px;
+
+  --shadow-sm:
+    0 3px 10px rgba(0,0,0,.28);
+
+  --shadow:
+    0 8px 25px rgba(0,0,0,.38);
+
+  --shadow-gold:
+    0 7px 22px rgba(174,139,61,.18);
+}
+
+
+/* =========================================================
+   BASE
+   ========================================================= */
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  min-height:100%;
+  background:#12120e;
+}
+
+body{
+  margin:0;
+  min-height:100vh;
+
+  background:
+    radial-gradient(
+      circle at 50% -10%,
+      rgba(114,101,57,.20),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 0% 100%,
+      rgba(62,82,49,.16),
+      transparent 30%
+    ),
+    linear-gradient(
+      180deg,
+      #191812 0%,
+      #211f16 48%,
+      #15150f 100%
+    );
+
+  color:var(--text);
+
+  font-family:
+    'Cinzel',
+    'Georgia',
+    serif;
+
+  -webkit-font-smoothing:antialiased;
+}
+
+button,
+input{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+a{
+  color:inherit;
+}
+
+
+/* =========================================================
+   MAIN SIDEBAR / FRAME
+   ========================================================= */
+
+.sidebar{
+  width:100%;
+  min-height:100vh;
+
+  position:relative;
+  overflow:hidden;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(39,37,26,.98),
+      rgba(31,30,21,.98) 48%,
+      rgba(25,24,17,.99)
+    );
+
+  border:
+    1px solid #50482f;
+
+  border-radius:0;
+
+  box-shadow:
+    inset 0 0 0 1px rgba(194,164,92,.07),
+    inset 0 0 45px rgba(0,0,0,.18),
+    0 12px 35px rgba(0,0,0,.35);
+}
+
+.sidebar::before{
+  content:"";
+
+  position:absolute;
+
+  width:300px;
+  height:300px;
+
+  top:-190px;
+  right:-110px;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(193,163,89,.11),
+      transparent 68%
+    );
+
+  pointer-events:none;
+}
+
+.sidebar::after{
+  content:"";
+
+  position:absolute;
+
+  width:260px;
+  height:260px;
+
+  bottom:-180px;
+  left:-120px;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(67,92,57,.13),
+      transparent 70%
+    );
+
+  pointer-events:none;
+}
+
+
+/* =========================================================
+   DECORATIVE CORNERS
+   ========================================================= */
+
+.corner{
+  position:absolute;
+
+  width:22px;
+  height:22px;
+
+  border:1px solid rgba(194,164,92,.58);
+
+  opacity:.8;
+
+  z-index:4;
+
+  pointer-events:none;
+}
+
+.corner.tl{
+  top:7px;
+  left:7px;
+
+  border-right:none;
+  border-bottom:none;
+
+  border-radius:2px 0 0 0;
+}
+
+.corner.tr{
+  top:7px;
+  right:7px;
+
+  border-left:none;
+  border-bottom:none;
+
+  border-radius:0 2px 0 0;
+}
+
+.corner.bl{
+  bottom:7px;
+  left:7px;
+
+  border-right:none;
+  border-top:none;
+
+  border-radius:0 0 0 2px;
+}
+
+.corner.br{
+  bottom:7px;
+  right:7px;
+
+  border-left:none;
+  border-top:none;
+
+  border-radius:0 0 2px 0;
+}
+
+
+/* =========================================================
+   VISIBILITY / ANIMATIONS
+   ========================================================= */
+
+.hidden,
+.page.hidden{
+  display:none !important;
+}
+
+@keyframes fadeIn{
+  from{
+    opacity:0;
+    transform:translateY(5px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.page{
+  animation:fadeIn .3s ease both;
+}
+
+@keyframes sparkle{
+  0%,100%{
+    opacity:.25;
+    transform:scale(.85) rotate(0deg);
+  }
+
+  50%{
+    opacity:1;
+    transform:scale(1.12) rotate(15deg);
+  }
+}
+
+@keyframes pulse{
+  0%,100%{
+    opacity:1;
+    box-shadow:0 0 7px rgba(121,168,102,.45);
+  }
+
+  50%{
+    opacity:.45;
+    box-shadow:0 0 2px rgba(121,168,102,.15);
+  }
+}
+
+
+/* =========================================================
+   BANNER
+   ========================================================= */
+
+.banner-wrap{
+  position:relative;
+
+  height:155px;
+  width:100%;
+
+  overflow:hidden;
+
+  background:
+    linear-gradient(
+      135deg,
+      #343c2b,
+      #51462d 55%,
+      #2d3025
+    );
+
+  border-bottom:
+    1px solid rgba(194,164,92,.35);
+}
+
+.banner-img{
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+
+  display:block;
+
+  filter:
+    saturate(.82)
+    contrast(1.08)
+    brightness(.72);
+}
+
+.banner-fade{
+  position:absolute;
+  inset:0;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(8,9,6,.08) 0%,
+      rgba(16,15,10,.18) 32%,
+      rgba(24,22,14,.68) 70%,
+      rgba(27,25,17,1) 100%
+    );
+}
+
+.banner-fade::before{
+  content:"✦";
+
+  position:absolute;
+
+  top:18px;
+  right:23px;
+
+  color:rgba(220,197,124,.82);
+
+  font-size:17px;
+
+  text-shadow:
+    0 0 9px rgba(211,181,91,.55);
+
+  animation:sparkle 3s ease-in-out infinite;
+}
+
+.banner-fade::after{
+  content:"✧";
+
+  position:absolute;
+
+  top:48px;
+  right:60px;
+
+  color:rgba(210,192,133,.6);
+
+  font-size:12px;
+
+  animation:sparkle 2.4s .5s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   BANNER CONTENT
+   ========================================================= */
+
+.banner-content{
+  position:absolute;
+
+  left:17px;
+  right:17px;
+  bottom:13px;
+
+  display:flex;
+  align-items:center;
+
+  gap:13px;
+
+  z-index:2;
+}
+
+.club-icon{
+  width:52px;
+  height:52px;
+
+  border-radius:5px;
+
+  border:
+    2px solid rgba(201,174,99,.82);
+
+  background:
+    linear-gradient(
+      145deg,
+      #413b28,
+      #211f16
+    );
+
+  box-shadow:
+    0 5px 16px rgba(0,0,0,.4),
+    0 0 0 3px rgba(28,27,19,.78),
+    inset 0 0 12px rgba(194,164,92,.12);
+
+  flex-shrink:0;
+}
+
+.banner-text .name{
+  font-family:
+    'Cinzel',
+    'Georgia',
+    serif;
+
+  color:#f0e3bb;
+
+  font-weight:700;
+
+  font-size:20px;
+
+  letter-spacing:1px;
+
+  line-height:1.05;
+
+  text-shadow:
+    0 2px 5px rgba(0,0,0,.8);
+}
+
+.banner-text .sub{
+  font-size:9px;
+
+  color:#b6ad91;
+
+  letter-spacing:2px;
+
+  margin-top:5px;
+
+  text-transform:uppercase;
+
+  text-shadow:
+    0 1px 4px #000;
+}
+
+
+/* =========================================================
+   STATUS
+   ========================================================= */
+
+.status-row{
+  display:flex;
+
+  justify-content:center;
+
+  padding:12px 18px 5px;
+}
+
+.status-left{
+  display:flex;
+
+  align-items:center;
+
+  gap:7px;
+}
+
+.dot{
+  width:7px;
+  height:7px;
+
+  border-radius:50%;
+
+  background:var(--grey-dim);
+
+  flex-shrink:0;
+}
+
+.dot.live{
+  background:var(--live);
+
+  box-shadow:
+    0 0 8px rgba(121,168,102,.5);
+
+  animation:pulse 1.8s ease-in-out infinite;
+}
+
+.dot.cached{
+  background:var(--cached);
+}
+
+.status-text{
+  font-size:9px;
+
+  letter-spacing:1.7px;
+
+  color:#918a76;
+
+  text-transform:uppercase;
+
+  font-family:
+    'Cinzel',
+    'Georgia',
+    serif;
+
+  font-weight:600;
+}
+
+
+/* =========================================================
+   CALENDAR BUTTON
+   ========================================================= */
+
+.calendar-btn{
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  width:calc(100% - 36px);
+
+  margin:0 auto;
+
+  gap:7px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #393527,
+      #29271c
+    );
+
+  border:
+    1px solid #62583a;
+
+  color:#d0bd82;
+
+  padding:10px 16px;
+
+  border-radius:4px;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.035),
+    0 4px 10px rgba(0,0,0,.25);
+
+  transition:.2s ease;
+
+  position:relative;
+
+  overflow:hidden;
+}
+
+.calendar-btn::before{
+  content:"";
+
+  position:absolute;
+
+  top:0;
+  left:-100%;
+
+  width:60%;
+  height:100%;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(226,205,143,.10),
+      transparent
+    );
+
+  transform:skewX(-20deg);
+
+  transition:.5s;
+}
+
+.calendar-btn:hover::before{
+  left:130%;
+}
+
+.calendar-btn:hover{
+  border-color:#9b8248;
+
+  color:#ead59a;
+
+  transform:translateY(-1px);
+
+  background:
+    linear-gradient(
+      135deg,
+      #45402e,
+      #302e20
+    );
+
+  box-shadow:var(--shadow-gold);
+}
+
+.match-badge{
+  background:
+    linear-gradient(
+      135deg,
+      #7f6a3b,
+      #a28749
+    );
+
+  color:#fff4d1;
+
+  font-size:8.5px;
+
+  font-weight:700;
+
+  padding:2px 7px;
+
+  border-radius:3px;
+
+  box-shadow:
+    0 2px 6px rgba(0,0,0,.25);
+}
+
+
+/* =========================================================
+   SECTION LABELS
+   ========================================================= */
+
+.section-label{
+  padding:17px 18px 9px;
+
+  font-size:9px;
+
+  letter-spacing:2px;
+
+  color:#9e9274;
+
+  text-transform:uppercase;
+
+  font-family:
+    'Cinzel',
+    'Georgia',
+    serif;
+
+  font-weight:700;
+
+  display:flex;
+
+  align-items:center;
+
+  gap:8px;
+}
+
+.section-label::before{
+  content:"◆";
+
+  width:auto;
+  height:auto;
+
+  background:none;
+
+  color:#b99b55;
+
+  font-size:6px;
+
+  box-shadow:none;
+}
+
+.section-label::after{
+  content:"";
+
+  flex:1;
+
+  height:1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #5b5137,
+      transparent
+    );
+}
+
+
+/* =========================================================
+   NEWEST MEMBERS
+   ========================================================= */
+
+.newest-list{
+  padding:0 14px;
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:6px;
+}
+
+.newest-row{
+  display:flex;
+
+  align-items:center;
+
+  gap:10px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #302e22,
+      #25241b
+    );
+
+  border:
+    1px solid #433d2b;
+
+  border-radius:4px;
+
+  padding:8px 10px;
+
+  text-decoration:none;
+
+  color:var(--text);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.025),
+    var(--shadow-sm);
+
+  transition:.18s ease;
+
+  position:relative;
+
+  overflow:hidden;
+}
+
+.newest-row::before{
+  content:"";
+
+  position:absolute;
+
+  left:0;
+  top:0;
+
+  width:2px;
+  height:100%;
+
+  background:
+    linear-gradient(
+      180deg,
+      #b69853,
+      #526b45
+    );
+
+  opacity:.7;
+}
+
+.newest-row:hover{
+  border-color:#76663f;
+
+  background:
+    linear-gradient(
+      135deg,
+      #3a3728,
+      #2c2b20
+    );
+
+  transform:translateX(3px);
+
+  box-shadow:
+    0 5px 15px rgba(0,0,0,.32);
+}
+
+.newest-row img{
+  width:30px;
+  height:30px;
+
+  border-radius:50%;
+
+  border:
+    1px solid #8b7546;
+
+  background:#242319;
+
+  flex-shrink:0;
+
+  box-shadow:
+    0 2px 7px rgba(0,0,0,.35);
+}
+
+.newest-row .nname{
+  font-size:12px;
+
+  font-weight:600;
+
+  flex:1;
+
+  overflow:hidden;
+
+  text-overflow:ellipsis;
+
+  white-space:nowrap;
+
+  color:#ddd4bc;
+}
+
+.newest-row .njoined{
+  font-size:9px;
+
+  color:#9eaa83;
+
+  font-family:
+    'Cinzel',
+    'Georgia',
+    serif;
+
+  font-weight:600;
+
+  letter-spacing:.4px;
+
+  white-space:nowrap;
+}
+
+.newest-empty{
+  font-size:11px;
+
+  color:#817a68;
+
+  padding:4px;
+}
+
+
+/* =========================================================
+   STATS
+   ========================================================= */
+
+.stats{
+  display:grid;
+
+  grid-template-columns:1fr 1fr;
+
+  border-top:1px solid #443e2c;
+  border-bottom:1px solid #443e2c;
+
+  margin-top:13px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(67,82,51,.18),
+      rgba(132,106,53,.12)
+    );
+}
+
+.stat{
+  padding:14px 18px;
+}
+
+.stat:first-child{
+  border-right:1px solid #443e2c;
+}
+
+.stat-label{
+  font-size:8.5px;
+
+  letter-spacing:1.5px;
+
+  color:#918a77;
+
+  text-transform:uppercase;
+
+  font-family:
+    'Cinzel',
+    'Georgia',
+    serif;
+
+  font-weight:600;
+}
+
+.stat-value{
+  font-family:
+    'Cinzel',
+    'Georgia',
+    serif;
+
+  font-weight:700;
+
+  font-size:22px;
+
+  color:#c6a960;
+
+  margin-top:5px;
+
+  letter-spacing:.4px;
+
+  text-shadow:
+    0 3px 12px rgba(194,164,92,.17);
+}
+
+.stat-value.small{
+  font-size:12px;
+
+  line-height:1.35;
+
+  color:#8da279;
+
+  text-shadow:none;
+}
+
+
+/* =========================================================
+   LINKS
+   ========================================================= */
+
+.links{
+  max-height:168px;
+
+  overflow-y:auto;
+
+  padding:0 12px 13px;
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:6px;
+}
+
+.links::-webkit-scrollbar{
+  width:5px;
+}
+
+.links::-webkit-scrollbar-thumb{
+  background:#5c543b;
+
+  border-radius:2px;
+}
+
+.links::-webkit-scrollbar-track{
+  background:transparent;
+}
+
+.link-btn{
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  background:
+    linear-gradient(
+      135deg,
+      #302e22,
+      #25241b
+    );
+
+  border:
+    1px solid #433d2b;
+
+  border-radius:4px;
+
+  padding:10px 13px;
+
+  text-decoration:none;
+
+  color:#d8d0b9;
+
+  font-size:12px;
+
+  font-weight:500;
+
+  transition:.18s ease;
+
+  box-shadow:var(--shadow-sm);
+}
+
+.link-btn:hover{
+  border-color:#78673f;
+
+  background:
+    linear-gradient(
+      135deg,
+      #3b3828,
+      #2b2a1f
+    );
+
+  transform:translateX(3px);
+
+  box-shadow:
+    0 5px 14px rgba(0,0,0,.3);
+}
+
+.link-btn .lname{
+  display:flex;
+
+  align-items:center;
+
+  gap:9px;
+}
+
+.link-btn .ico{
+  width:24px;
+  height:24px;
+
+  border-radius:3px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #47412d,
+      #29281d
+    );
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  font-size:11px;
+
+  flex-shrink:0;
+
+  border:
+    1px solid #62563a;
+
+  color:#c1a45e;
+}
+
+.link-btn .arrow{
+  color:#817862;
+
+  font-size:14px;
+
+  transition:.18s;
+}
+
+.link-btn:hover .arrow{
+  color:#d0b66c;
+
+  transform:translateX(3px);
+}
+
+
+/* =========================================================
+   LEADERSHIP
+   ========================================================= */
+
+.leadership{
+  border-top:1px solid #443e2c;
+
+  padding-bottom:19px;
+
+  position:relative;
+}
+
+.card-wrap{
+  padding:7px 18px 0;
+
+  display:flex;
+
+  justify-content:center;
+}
+
+.card{
+  width:100%;
+
+  background:
+    linear-gradient(
+      145deg,
+      #393527 0%,
+      #2d2b20 55%,
+      #25241a 100%
+    );
+
+  border:
+    1px solid #675a3b;
+
+  border-radius:5px;
+
+  padding:18px;
+
+  text-align:center;
+
+  position:relative;
+
+  overflow:hidden;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.03),
+    var(--shadow);
+}
+
+.card::before{
+  content:"";
+
+  position:absolute;
+
+  width:190px;
+  height:190px;
+
+  top:-130px;
+  left:50%;
+
+  transform:translateX(-50%);
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(190,160,86,.16),
+      rgba(72,94,58,.06) 48%,
+      transparent 70%
+    );
+
+  pointer-events:none;
+}
+
+.card::after{
+  content:"✦";
+
+  position:absolute;
+
+  top:10px;
+  right:13px;
+
+  color:rgba(208,180,99,.3);
+
+  font-size:17px;
+
+  animation:sparkle 3s ease-in-out infinite;
+}
+
+.card img{
+  width:68px;
+  height:68px;
+
+  border-radius:50%;
+
+  object-fit:cover;
+
+  border:2px solid #ded0a5;
+
+  box-shadow:
+    0 0 0 2px #66583a,
+    0 5px 18px rgba(0,0,0,.4);
+
+  background:#29271d;
+}
+
+.card .uname{
+  margin-top:11px;
+
+  font-family:
+    'Cinzel',
+    'Georgia',
+    serif;
+
+  color:#e0cd94;
+
+  font-weight:700;
+
+  font-size:16px;
+
+  letter-spacing:.5px;
+}
+
+.card .role{
+  margin-top:5px;
+
+  display:inline-block;
+
+  font-size:8px;
+
+  letter-spacing:1.2px;
+
+  text-transform:uppercase;
+
+  color:#f4e9c7;
+
+  background:
+    linear-gradient(
+      135deg,
+      #637952,
+      #43553a
+    );
+
+  padding:4px 11px;
+
+  border-radius:3px;
+
+  font-weight:700;
+
+  box-shadow:
+    0 3px 8px rgba(0,0,0,.25);
+
+  border:1px solid #71845d;
+}
+
+.card .role.super{
+  background:
+    linear-gradient(
+      135deg,
+      #92763c,
+      #6e592f
+    );
+
+  border-color:#b09555;
+
+  color:#fff2c9;
+}
+
+.card .meta{
+  margin-top:10px;
+
+  font-size:10px;
+
+  color:#99917d;
+
+  display:flex;
+
+  justify-content:center;
+
+  gap:10px;
+
+  flex-wrap:wrap;
+}
+
+.card a.profile-link{
+  display:inline-block;
+
+  margin-top:11px;
+
+  font-size:10.5px;
+
+  color:#83a4a9;
+
+  text-decoration:none;
+
+  border-bottom:1px solid rgba(131,164,169,.3);
+
+  padding-bottom:1px;
+
+  transition:.15s;
+}
+
+.card a.profile-link:hover{
+  color:#a9cbd0;
+
+  border-color:#a9cbd0;
+}
+
+
+/* =========================================================
+   CAROUSEL
+   ========================================================= */
+
+.carousel-controls{
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  gap:16px;
+
+  margin-top:12px;
+}
+
+.arrow-btn{
+  width:32px;
+  height:32px;
+
+  border-radius:4px;
+
+  border:1px solid #63583c;
+
+  background:
+    linear-gradient(
+      145deg,
+      #393628,
+      #29281e
+    );
+
+  color:#bca264;
+
+  cursor:pointer;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  font-size:14px;
+
+  transition:.18s ease;
+
+  box-shadow:var(--shadow-sm);
+}
+
+.arrow-btn:hover{
+  border-color:#9a8048;
+
+  color:#e0c77d;
+
+  background:#3e3a29;
+
+  transform:scale(1.05);
+}
+
+.arrow-btn:active{
+  transform:scale(.92);
+}
+
+.carousel-index{
+  font-family:
+    'Cinzel',
+    'Georgia',
+    serif;
+
+  font-size:10px;
+
+  color:#8e856e;
+
+  letter-spacing:.7px;
+
+  min-width:38px;
+
+  text-align:center;
+}
+
+
+/* =========================================================
+   CALENDAR
+   ========================================================= */
+
+.cal-header{
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  padding:17px 18px 4px;
+}
+
+.cal-title{
+  font-family:
+    'Cinzel',
+    'Georgia',
+    serif;
+
+  color:#c7ae70;
+
+  font-weight:700;
+
+  font-size:15px;
+
+  letter-spacing:.6px;
+}
+
+.cal-nav{
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  gap:14px;
+
+  padding:8px 18px 12px;
+}
+
+.cal-month-label{
+  font-family:
+    'Cinzel',
+    'Georgia',
+    serif;
+
+  font-weight:600;
+
+  font-size:11px;
+
+  color:#a49a80;
+
+  min-width:130px;
+
+  text-align:center;
+}
+
+.cal-grid{
+  display:grid;
+
+  grid-template-columns:repeat(7,1fr);
+
+  gap:4px;
+
+  padding:0 16px 9px;
+}
+
+.cal-weekday{
+  font-size:8px;
+
+  color:#807865;
+
+  text-align:center;
+
+  font-family:
+    'Cinzel',
+    'Georgia',
+    serif;
+
+  font-weight:600;
+
+  letter-spacing:.6px;
+
+  padding-bottom:4px;
+}
+
+.cal-day{
+  display:flex;
+
+  flex-direction:column;
+
+  gap:2px;
+
+  min-height:43px;
+
+  border-radius:3px;
+
+  padding:4px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #302f23,
+      #29281e
+    );
+
+  border:1px solid #3d3929;
+
+  position:relative;
+
+  cursor:pointer;
+
+  transition:.16s ease;
+}
+
+.cal-day.empty{
+  background:transparent;
+
+  border:none;
+
+  cursor:default;
+}
+
+.cal-day:not(.empty):hover{
+  border-color:#79673e;
+
+  background:#393628;
+
+  transform:scale(1.02);
+}
+
+.cal-day .day-num{
+  font-size:9px;
+
+  color:#918872;
+
+  text-align:right;
+
+  padding-right:1px;
+
+  line-height:1;
+}
+
+.cal-day.today .day-num{
+  color:#d6bc72;
+
+  font-weight:700;
+}
+
+.cal-day.today{
+  border-color:#8d7543;
+
+  background:
+    linear-gradient(
+      145deg,
+      #3c3928,
+      #302f23
+    );
+
+  box-shadow:
+    inset 0 0 0 1px rgba(194,164,92,.08);
+}
+
+.cal-day.selected{
+  background:
+    linear-gradient(
+      145deg,
+      #627453,
+      #45563b
+    );
+
+  border-color:#9caf80;
+
+  box-shadow:
+    0 5px 12px rgba(0,0,0,.3);
+}
+
+.cal-day.selected .day-num{
+  color:#f3e7c1;
+}
+
+.evt-chip{
+  display:block;
+
+  font-size:7px;
+
+  line-height:1.2;
+
+  font-weight:600;
+
+  background:
+    rgba(105,158,179,.18);
+
+  color:#8fc0cf;
+
+  text-decoration:none;
+
+  border-radius:2px;
+
+  padding:1.5px 3px;
+
+  overflow:hidden;
+
+  text-overflow:ellipsis;
+
+  white-space:nowrap;
+
+  text-align:left;
+}
+
+.evt-chip:hover{
+  background:rgba(105,158,179,.3);
+}
+
+.cal-day.selected .evt-chip{
+  background:rgba(235,226,188,.2);
+
+  color:#f3e8c7;
+}
+
+.evt-more{
+  font-size:7px;
+
+  color:#89816d;
+
+  text-align:left;
+
+  padding-left:3px;
+}
+
+.cal-day.selected .evt-more{
+  color:#d6d0b5;
+}
+
+.cal-day .evt-dot{
+  width:4px;
+  height:4px;
+
+  border-radius:50%;
+
+  background:#75b2c5;
+
+  box-shadow:
+    0 0 5px rgba(117,178,197,.55);
+}
+
+
+/* =========================================================
+   AGENDA
+   ========================================================= */
+
+.agenda-filter{
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  padding:0 18px 7px;
+
+  font-size:10px;
+
+  color:#8d856f;
+}
+
+.agenda-filter button{
+  background:none;
+
+  border:none;
+
+  color:#91a976;
+
+  font-size:10px;
+
+  cursor:pointer;
+
+  font-family:
+    'Cinzel',
+    'Georgia',
+    serif;
+
+  font-weight:600;
+}
+
+.agenda-filter button:hover{
+  color:#b6cd96;
+}
+
+.agenda-list{
+  padding:0 14px 17px;
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:6px;
+}
+
+.agenda-item{
+  display:flex;
+
+  flex-direction:column;
+
+  gap:3px;
+
+  text-decoration:none;
+
+  color:var(--text);
+
+  background:
+    linear-gradient(
+      135deg,
+      #302e22,
+      #27261c
+    );
+
+  border:
+    1px solid #433d2b;
+
+  border-radius:4px;
+
+  padding:9px 11px;
+
+  transition:.17s ease;
+
+  box-shadow:var(--shadow-sm);
+}
+
+.agenda-item:hover{
+  border-color:#77653e;
+
+  background:
+    linear-gradient(
+      135deg,
+      #393628,
+      #2b2a1f
+    );
+
+  transform:translateX(2px);
+}
+
+.agenda-top{
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  gap:8px;
+}
+
+.agenda-name{
+  font-size:12px;
+
+  font-weight:600;
+
+  overflow:hidden;
+
+  text-overflow:ellipsis;
+
+  white-space:nowrap;
+}
+
+.agenda-badge{
+  font-size:8px;
+
+  text-transform:uppercase;
+
+  letter-spacing:.6px;
+
+  font-family:
+    'Cinzel',
+    'Georgia',
+    serif;
+
+  font-weight:700;
+
+  padding:2px 7px;
+
+  border-radius:3px;
+
+  background:#373427;
+
+  color:#91ae7a;
+
+  border:1px solid #4d5639;
+
+  flex-shrink:0;
+}
+
+.agenda-date{
+  font-size:10px;
+
+  color:#89816e;
+}
+
+
+/* =========================================================
+   SEARCH
+   ========================================================= */
+
+.search-row{
+  display:flex;
+
+  gap:8px;
+
+  padding:10px 18px 2px;
+}
+
+.search-input{
+  flex:1;
+
+  background:
+    linear-gradient(
+      135deg,
+      #302f23,
+      #26251c
+    );
+
+  border:
+    1px solid #4a4430;
+
+  border-radius:4px;
+
+  padding:9px 11px;
+
+  color:#ddd4bb;
+
+  font-size:12px;
+
+  font-family:
+    'Cinzel',
+    'Georgia',
+    serif;
+
+  outline:none;
+
+  transition:.18s ease;
+}
+
+.search-input:focus{
+  border-color:#8d7747;
+
+  background:#343227;
+
+  box-shadow:
+    0 0 0 3px rgba(155,132,72,.08);
+}
+
+.search-input::placeholder{
+  color:#77705e;
+}
+
+.search-btn{
+  background:
+    linear-gradient(
+      135deg,
+      #7d693b,
+      #5f5130
+    );
+
+  color:#f4e8c5;
+
+  border:
+    1px solid #9a824a;
+
+  border-radius:4px;
+
+  padding:0 16px;
+
+  font-family:
+    'Cinzel',
+    'Georgia',
+    serif;
+
+  font-weight:700;
+
+  font-size:10.5px;
+
+  cursor:pointer;
+
+  transition:.18s ease;
+
+  box-shadow:
+    0 5px 12px rgba(0,0,0,.25);
+}
+
+.search-btn:hover{
+  background:
+    linear-gradient(
+      135deg,
+      #947b45,
+      #706039
+    );
+
+  transform:translateY(-1px);
+
+  box-shadow:
+    0 7px 16px rgba(0,0,0,.3);
+}
+
+.search-btn:disabled{
+  opacity:.6;
+
+  cursor:default;
+
+  transform:none;
+}
+
+.search-feedback{
+  padding:5px 18px 0;
+
+  font-size:10px;
+
+  color:#b18b50;
+
+  min-height:14px;
+}
+
+.search-feedback.ok{
+  color:#80a66b;
+}
+
+
+/* =========================================================
+   SPOTLIGHT
+   ========================================================= */
+
+.spotlight-card{
+  margin:0 18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #393528 0%,
+      #2f2d21 58%,
+      #28271d 100%
+    );
+
+  border:
+    1px solid #64583b;
+
+  border-radius:5px;
+
+  padding:14px;
+
+  display:flex;
+
+  align-items:center;
+
+  gap:12px;
+
+  position:relative;
+
+  overflow:hidden;
+
+  box-shadow:var(--shadow);
+}
+
+.spotlight-card::before{
+  content:"";
+
+  position:absolute;
+
+  width:160px;
+  height:160px;
+
+  top:-110px;
+  right:-60px;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(194,164,92,.14),
+      transparent 70%
+    );
+}
+
+.spotlight-card::after{
+  content:"✦";
+
+  position:absolute;
+
+  top:7px;
+  right:10px;
+
+  color:rgba(202,175,98,.27);
+
+  font-size:15px;
+
+  animation:sparkle 2.6s ease-in-out infinite;
+}
+
+.spotlight-card img{
+  width:51px;
+  height:51px;
+
+  border-radius:50%;
+
+  border:2px solid #d2c28f;
+
+  box-shadow:
+    0 0 0 2px #62563a,
+    0 4px 13px rgba(0,0,0,.35);
+
+  background:#29281e;
+
+  flex-shrink:0;
+}
+
+.spotlight-info{
+  flex:1;
+
+  min-width:0;
+}
+
+.spotlight-name{
+  font-family:
+    'Cinzel',
+    'Georgia',
+    serif;
+
+  color:#d2bd7d;
+
+  font-weight:700;
+
+  font-size:14px;
+}
+
+.spotlight-meta{
+  font-size:10px;
+
+  color:#8e8774;
+
+  margin-top:2px;
+}
+
+.spotlight-link{
+  font-size:10px;
+
+  color:#7ca8ad;
+
+  text-decoration:none;
+
+  margin-top:4px;
+
+  display:inline-block;
+}
+
+.spotlight-link:hover{
+  color:#a4cbd0;
+}
+
+.shuffle-btn{
+  width:33px;
+  height:33px;
+
+  border-radius:4px;
+
+  border:1px solid #5e5439;
+
+  background:
+    linear-gradient(
+      145deg,
+      #3b382a,
+      #29281e
+    );
+
+  color:#b99d5b;
+
+  cursor:pointer;
+
+  flex-shrink:0;
+
+  font-size:14px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  transition:.18s ease;
+}
+
+.shuffle-btn:hover{
+  border-color:#8c7545;
+
+  color:#ddc67e;
+
+  background:#403c2b;
+
+  transform:rotate(8deg);
+}
+
+.shuffle-btn.spinning{
+  animation:spin .5s linear;
+}
+
+@keyframes spin{
+  from{
+    transform:rotate(0);
+  }
+
+  to{
+    transform:rotate(360deg);
+  }
+}
+
+
+/* =========================================================
+   RECORD
+   ========================================================= */
+
+.record-wrap{
+  padding:14px 18px;
+
+  border-top:1px solid #443e2c;
+
+  border-bottom:1px solid #443e2c;
+}
+
+.record-title{
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:baseline;
+
+  margin-bottom:8px;
+}
+
+.record-figures{
+  font-family:
+    'Cinzel',
+    'Georgia',
+    serif;
+
+  font-weight:700;
+
+  font-size:13px;
+}
+
+.record-figures .w{
+  color:#80a66c;
+}
+
+.record-figures .l{
+  color:#b96f64;
+}
+
+.record-figures .d{
+  color:#928a76;
+}
+
+.record-bar{
+  height:7px;
+
+  border-radius:2px;
+
+  overflow:hidden;
+
+  display:flex;
+
+  background:#3a382b;
+
+  border:1px solid #48422f;
+}
+
+.record-bar div{
+  height:100%;
+}
+
+.record-empty{
+  font-size:11px;
+
+  color:#817a68;
+}
+
+
+/* =========================================================
+   INSTAGRAM / SOCIAL
+   ========================================================= */
+
+.insta-card{
+  margin:0 18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #332f27,
+      #28271e
+    );
+
+  border:
+    1px solid #514936;
+
+  border-radius:5px;
+
+  padding:14px;
+
+  display:flex;
+
+  align-items:center;
+
+  gap:12px;
+
+  position:relative;
+
+  overflow:hidden;
+
+  text-decoration:none;
+
+  color:var(--text);
+
+  transition:.18s ease;
+
+  box-shadow:var(--shadow-sm);
+}
+
+.insta-card::before{
+  content:"";
+
+  position:absolute;
+
+  inset:0;
+
+  background:
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(155,83,70,.14),
+      transparent 55%
+    );
+}
+
+.insta-card:hover{
+  border-color:#805e51;
+
+  background:
+    linear-gradient(
+      135deg,
+      #3b342b,
+      #2b2920
+    );
+
+  transform:translateY(-1px);
+
+  box-shadow:
+    0 7px 19px rgba(0,0,0,.28);
+}
+
+.insta-avatar{
+  width:44px;
+  height:44px;
+
+  border-radius:6px;
+
+  object-fit:cover;
+
+  background:#29281e;
+
+  flex-shrink:0;
+
+  border:1px solid #62573d;
+}
+
+.insta-info{
+  flex:1;
+
+  min-width:0;
+}
+
+.insta-name{
+  font-family:
+    'Cinzel',
+    'Georgia',
+    serif;
+
+  font-weight:700;
+
+  font-size:13.5px;
+
+  color:#c8bb96;
+}
+
+.insta-sub{
+  font-size:10px;
+
+  color:#87806d;
+
+  margin-top:2px;
+}
+
+.insta-status{
+  display:flex;
+
+  align-items:center;
+
+  gap:5px;
+
+  flex-shrink:0;
+}
+
+.insta-status .dot{
+  margin:0;
+}
+
+.insta-status span.txt{
+  font-size:8.5px;
+
+  letter-spacing:.7px;
+
+  color:#83a56f;
+
+  text-transform:uppercase;
+
+  font-family:
+    'Cinzel',
+    'Georgia',
+    serif;
+
+  font-weight:700;
+}
+
+
+/* =========================================================
+   DISCORD
+   ========================================================= */
+
+.discord-btn{
+  margin:0 18px;
+
+  display:flex;
+
+  align-items:center;
+
+  gap:12px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #4e5e68 0%,
+      #46515a 48%,
+      #514d55 100%
+    );
+
+  border:
+    1px solid #71808a;
+
+  border-radius:5px;
+
+  padding:14px 16px;
+
+  text-decoration:none;
+
+  color:#fff;
+
+  transition:.2s ease;
+
+  box-shadow:
+    0 9px 22px -7px rgba(0,0,0,.45);
+
+  position:relative;
+
+  overflow:hidden;
+}
+
+.discord-btn::before{
+  content:"";
+
+  position:absolute;
+
+  top:0;
+  left:-100%;
+
+  width:55%;
+  height:100%;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255,255,255,.13),
+      transparent
+    );
+
+  transform:skewX(-20deg);
+
+  transition:.5s ease;
+}
+
+.discord-btn:hover::before{
+  left:130%;
+}
+
+.discord-btn:hover{
+  transform:translateY(-2px);
+
+  border-color:#8998a0;
+
+  box-shadow:
+    0 12px 28px -7px rgba(0,0,0,.55);
+}
+
+.discord-btn .d-icon{
+  width:34px;
+  height:34px;
+
+  flex-shrink:0;
+
+  filter:
+    brightness(0)
+    invert(1);
+}
+
+.discord-btn .d-text{
+  flex:1;
+
+  min-width:0;
+}
+
+.discord-btn .d-title{
+  font-family:
+    'Cinzel',
+    'Georgia',
+    serif;
+
+  font-weight:700;
+
+  font-size:14px;
+
+  letter-spacing:.5px;
+}
+
+.discord-btn .d-sub{
+  font-size:10px;
+
+  color:rgba(255,255,255,.78);
+
+  margin-top:2px;
+}
+
+.discord-btn .d-arrow{
+  font-size:18px;
+
+  flex-shrink:0;
+
+  color:rgba(255,255,255,.75);
+}
+
+
+/* =========================================================
+   TRENDING ANIME PAGE
+   ========================================================= */
+
+#pageTrendingAnime{
+  width:100%;
+
+  min-height:100%;
+
+  box-sizing:border-box;
+}
+
+.trending-page-header{
+  display:flex;
+
+  align-items:center;
+
+  gap:13px;
+
+  padding:18px 18px 12px;
+}
+
+.trending-page-header .section-label{
+  padding:0;
+}
+
+.trending-back-btn{
+  width:46px !important;
+  height:46px !important;
+
+  min-width:46px !important;
+  max-width:46px !important;
+
+  min-height:46px !important;
+  max-height:46px !important;
+
+  flex:0 0 46px !important;
+
+  display:flex !important;
+
+  align-items:center !important;
+  justify-content:center !important;
+
+  padding:0 !important;
+  margin:0 !important;
+
+  border:
+    1px solid #665b3d !important;
+
+  border-radius:4px !important;
+
+  background:
+    linear-gradient(
+      145deg,
+      #3b3829,
+      #29281e
+    ) !important;
+
+  color:#c1a35e !important;
+
+  font-family:
+    'Georgia',
+    serif !important;
+
+  font-size:25px !important;
+
+  font-weight:400 !important;
+
+  line-height:1 !important;
+
+  cursor:pointer;
+
+  box-shadow:
+    0 4px 11px rgba(0,0,0,.28) !important;
+
+  transition:.18s ease;
+}
+
+.trending-back-btn:hover{
+  background:
+    linear-gradient(
+      145deg,
+      #45402d,
+      #302f22
+    ) !important;
+
+  border-color:#8d7645 !important;
+
+  color:#e0c67d !important;
+
+  transform:translateX(-2px);
+}
+
+.trending-back-btn:active{
+  transform:scale(.92);
+}
+
+.anime-trending-page{
+  padding:4px 18px 30px;
+}
+
+.anime-trending-page .anime-list{
+  display:flex;
+
+  flex-direction:column;
+
+  gap:9px;
+}
+
+.anime-trending-page .anime-card{
+  display:grid;
+
+  grid-template-columns:
+    55px
+    72px
+    minmax(0,1fr);
+
+  align-items:center;
+
+  gap:14px;
+
+  min-height:106px;
+
+  padding:10px 12px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #332f25 0%,
+      #2c2b20 62%,
+      #28271d 100%
+    );
+
+  border:
+    1px solid #48412f;
+
+  border-radius:5px;
+
+  text-decoration:none;
+
+  color:var(--text);
+
+  transition:.2s ease;
+
+  box-shadow:
+    0 5px 15px rgba(0,0,0,.28);
+
+  position:relative;
+
+  overflow:hidden;
+}
+
+.anime-trending-page .anime-card::before{
+  content:"";
+
+  position:absolute;
+
+  top:0;
+  left:0;
+
+  width:4px;
+  height:100%;
+
+  background:
+    linear-gradient(
+      180deg,
+      #b99b54,
+      #667b54,
+      #4b6570
+    );
+
+  opacity:.7;
+
+  transition:.2s ease;
+}
+
+.anime-trending-page .anime-card::after{
+  content:"✦";
+
+  position:absolute;
+
+  top:6px;
+  right:10px;
+
+  color:rgba(195,166,92,.16);
+
+  font-size:14px;
+
+  transition:.2s ease;
+}
+
+.anime-trending-page .anime-card:hover{
+  background:
+    linear-gradient(
+      135deg,
+      #3c382a,
+      #343226 58%,
+      #2b2a20
+    );
+
+  border-color:#75643f;
+
+  transform:translateY(-2px);
+
+  box-shadow:
+    0 9px 23px rgba(0,0,0,.4);
+}
+
+.anime-trending-page .anime-card:hover::before{
+  opacity:1;
+
+  width:5px;
+}
+
+.anime-trending-page .anime-card:hover::after{
+  color:rgba(208,179,99,.38);
+
+  transform:rotate(20deg) scale(1.1);
+}
+
+.anime-trending-page .anime-rank{
+  color:#b99c59;
+
+  font-family:
+    'Cinzel',
+    'Georgia',
+    serif;
+
+  font-size:25px;
+
+  font-weight:700;
+
+  text-align:center;
+
+  text-shadow:
+    0 3px 10px rgba(190,158,79,.18);
+}
+
+.anime-trending-page .anime-cover{
+  width:72px;
+  height:92px;
+
+  object-fit:cover;
+
+  display:block;
+
+  border-radius:3px;
+
+  border:2px solid #b5a26c;
+
+  background:#29281d;
+
+  box-shadow:
+    0 0 0 1px #514831,
+    0 5px 12px rgba(0,0,0,.4);
+}
+
+.anime-trending-page .anime-info{
+  min-width:0;
+}
+
+.anime-trending-page .anime-title{
+  color:#dfd3b5;
+
+  font-size:16px;
+
+  font-weight:700;
+
+  line-height:1.2;
+
+  overflow:hidden;
+
+  white-space:nowrap;
+
+  text-overflow:ellipsis;
+}
+
+.anime-trending-page .anime-score{
+  margin-top:8px;
+
+  color:#9c927a;
+
+  font-family:
+    'Cinzel',
+    'Georgia',
+    serif;
+
+  font-size:11px;
+
+  font-weight:600;
+}
+
+.anime-trending-page .anime-loading{
+  padding:25px 16px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #302e22,
+      #27261c
+    );
+
+  border:
+    1px solid #443e2c;
+
+  border-radius:4px;
+
+  color:#908873;
+
+  font-size:12px;
+
+  text-align:center;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width:520px){
+
+  .banner-wrap{
+    height:140px;
+  }
+
+  .banner-content{
+    left:14px;
+    right:14px;
+    bottom:11px;
+  }
+
+  .club-icon{
+    width:45px;
+    height:45px;
+
+    border-radius:4px;
+  }
+
+  .banner-text .name{
+    font-size:17px;
+
+    letter-spacing:.7px;
+  }
+
+  .banner-text .sub{
+    font-size:8px;
+
+    letter-spacing:1.5px;
+  }
+
+  .trending-page-header{
+    padding:16px 14px 10px;
+  }
+
+  .trending-back-btn{
+    width:43px !important;
+    height:43px !important;
+
+    min-width:43px !important;
+    max-width:43px !important;
+
+    min-height:43px !important;
+    max-height:43px !important;
+
+    flex-basis:43px !important;
+
+    font-size:24px !important;
+  }
+
+  .anime-trending-page{
+    padding:4px 12px 25px;
+  }
+
+  .anime-trending-page .anime-list{
+    gap:7px;
+  }
+
+  .anime-trending-page .anime-card{
+    grid-template-columns:
+      42px
+      64px
+      minmax(0,1fr);
+
+    gap:9px;
+
+    min-height:92px;
+
+    padding:8px 9px;
+
+    border-radius:4px;
+  }
+
+  .anime-trending-page .anime-rank{
+    font-size:20px;
+  }
+
+  .anime-trending-page .anime-cover{
+    width:64px;
+    height:82px;
+  }
+
+  .anime-trending-page .anime-title{
+    font-size:14px;
+  }
+
+  .anime-trending-page .anime-score{
+    margin-top:6px;
+
+    font-size:10px;
+  }
+
+  .search-row{
+    padding-left:14px;
+    padding-right:14px;
+  }
+
+  .spotlight-card,
+  .insta-card,
+  .discord-btn{
+    margin-left:14px;
+    margin-right:14px;
+  }
+
+  .card-wrap{
+    padding-left:14px;
+    padding-right:14px;
+  }
+}
+
+
+/* =========================================================
+   FOCUS / SELECTION
+   ========================================================= */
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible{
+  outline:
+    2px solid rgba(195,165,91,.65);
+
+  outline-offset:2px;
+}
+
+::selection{
+  background:#76633c;
+
+  color:#fff1c9;
+}

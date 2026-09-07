@@ -1,0 +1,189 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Anime Team — Club Sidebar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="sidebar" id="sidebar">
+  <div class="corner tl"></div><div class="corner tr"></div>
+  <div class="corner bl"></div><div class="corner br"></div>
+
+  <div class="page" id="pageMain">
+    <div class="banner-wrap">
+      <img class="banner-img" src="https://i.pinimg.com/originals/ca/b4/59/cab45983d963c43d7d7658e777cc6148.gif" alt="Anime Team banner">
+      <div class="banner-fade"></div>
+      <div class="banner-content">
+        <img class="club-icon" id="clubIcon" src="https://images.chesscomfiles.com/uploads/v1/group/4431.85961f45.160x160o.ec0342835f1f.gif" alt="Anime Team icon">
+        <div class="banner-text">
+          <div class="name">Anime Team</div>
+          <div class="sub">Chess.com Club</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="status-row">
+      <button class="calendar-btn" id="calendarOpenBtn">📅 Matches <span class="match-badge" id="matchBadge" style="display:none;"></span></button>
+    </div>
+
+    <div class="search-row">
+      <input type="text" id="memberSearchInput" class="search-input" placeholder="Jump to a member…" autocomplete="off">
+      <button class="search-btn" id="memberSearchBtn">Go</button>
+    </div>
+    <div class="search-feedback" id="searchFeedback"></div>
+
+    <div class="section-label">Newest Members</div>
+    <div class="newest-list" id="newestList">
+      <div class="newest-empty">Loading…</div>
+    </div>
+
+    <div class="section-label">Member Spotlight</div>
+    <div class="spotlight-card" id="spotlightCard">
+      <img id="spotlightAvatar" src="https://www.chess.com/bundles/web/images/user-image.007dad08.svg" alt="">
+      <div class="spotlight-info">
+        <div class="spotlight-name" id="spotlightName">Loading…</div>
+        <div class="spotlight-meta" id="spotlightMeta"></div>
+        <a class="spotlight-link" id="spotlightLink" href="#" target="_blank" rel="noopener">View Profile ↗</a>
+      </div>
+      <button class="shuffle-btn" id="shuffleBtn" aria-label="Shuffle spotlight">🎲</button>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-label">Members</div>
+        <div class="stat-value" id="memberCount">—</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Club Age</div>
+        <div class="stat-value small" id="clubAge">—</div>
+      </div>
+    </div>
+
+    <div class="record-wrap">
+      <div class="record-title">
+        <span class="stat-label">Club Match Record</span>
+        <span class="record-figures" id="recordFigures">—</span>
+      </div>
+      <div class="record-bar" id="recordBar">
+        <div id="segW" style="background:var(--live); width:0%;"></div>
+        <div id="segL" style="background:#e15a5a; width:0%;"></div>
+        <div id="segD" style="background:var(--grey-dim); width:0%;"></div>
+      </div>
+    </div>
+
+    <div style="padding:14px 18px 18px;">
+      <button class="calendar-btn" id="communityOpenBtn" style="width:100%; justify-content:center;">Community & Links →</button>
+    </div>
+  </div>
+
+  <div class="page hidden" id="pageCommunity">
+    <div class="cal-header">
+      <button class="arrow-btn" id="communityBackBtn" aria-label="Back">‹</button>
+      <div class="cal-title">Community</div>
+      <div style="width:30px"></div>
+    </div>
+
+    <div class="section-label">Discord</div>
+    <a class="discord-btn" href="https://discord.gg/JsK2jEfUK" target="_blank" rel="noopener">
+      <img class="d-icon" src="https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/66e3d80db9971f10a9757c99_Symbol.svg" alt="Discord">
+      <div class="d-text">
+        <div class="d-title">Join our Discord</div>
+        <div class="d-sub">Chat, voice, and match pings</div>
+      </div>
+      <span class="d-arrow">→</span>
+    </a>
+
+    <div class="section-label">Instagram</div>
+    <a class="insta-card" href="https://www.instagram.com/animeteam.cc/" target="_blank" rel="noopener">
+      <img class="insta-avatar" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/1280px-Instagram_icon.png" alt="Instagram">
+      <div class="insta-info">
+        <div class="insta-name">@animeteam.cc</div>
+        <div class="insta-sub">Follow us on Instagram ↗</div>
+      </div>
+      <div class="insta-status">
+        <div class="dot live"></div>
+      </div>
+    </a>
+
+    <div class="section-label">Club Links</div>
+    <div class="links" id="linksList"></div>
+
+    <div class="leadership">
+      <div class="section-label">Leadership</div>
+      <div class="card-wrap">
+        <div class="card" id="card">
+          <img id="cardAvatar" src="" alt="">
+          <div class="uname" id="cardName">—</div>
+          <div class="role" id="cardRole">—</div>
+          <div class="meta" id="cardMeta"></div>
+          <a class="profile-link" id="cardLink" href="#" target="_blank" rel="noopener">View Profile ↗</a>
+        </div>
+      </div>
+      <div class="carousel-controls">
+        <button class="arrow-btn" id="prevBtn" aria-label="Previous member">‹</button>
+        <div class="carousel-index" id="cardIndex">1 / 7</div>
+        <button class="arrow-btn" id="nextBtn" aria-label="Next member">›</button>
+      </div>
+    </div>
+    <div style="padding:14px 18px 18px;">
+  <button class="calendar-btn" id="trendingAnimeOpenBtn" style="width:100%; justify-content:center;">
+    Trending Anime →
+  </button>
+</div>
+  </div>
+
+  <div id="pageTrendingAnime" class="hidden">
+
+  <div class="trending-page-header">
+    <button
+      type="button"
+      class="trending-back-btn"
+      id="trendingAnimeBackBtn"
+      aria-label="Back to Community"
+    >
+      ‹
+    </button>
+
+    <div class="section-label">Trending Anime</div>
+  </div>
+
+  <div class="anime-trending-page">
+    <div class="anime-list" id="animeList">
+      <div class="anime-loading">
+        Loading trending anime...
+      </div>
+    </div>
+  </div>
+
+  </div>
+
+  <div class="page hidden" id="pageCalendar">
+    <div class="cal-header">
+      <button class="arrow-btn" id="calBackBtn" aria-label="Back">‹</button>
+      <div class="cal-title">Match Calendar</div>
+      <div style="width:30px"></div>
+    </div>
+    <div class="cal-nav">
+      <button class="arrow-btn" id="calPrevBtn" aria-label="Previous month">‹</button>
+      <div class="cal-month-label" id="calMonthLabel">—</div>
+      <button class="arrow-btn" id="calNextBtn" aria-label="Next month">›</button>
+    </div>
+    <div class="cal-grid" id="calGrid"></div>
+    <div class="section-label">Upcoming Matches</div>
+    <div class="agenda-filter hidden" id="agendaFilter">
+      <span id="agendaFilterLabel"></span>
+      <button id="agendaFilterClear">Show all</button>
+    </div>
+    <div class="agenda-list" id="agendaList"><div class="newest-empty">Loading…</div></div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
