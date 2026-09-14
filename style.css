@@ -1,40 +1,40 @@
 :root{
-  --bg:#171711;
-  --panel:#242218;
-  --panel-alt:#2d2a1e;
+  --bg:#121321;
+  --panel:#211f2d;
+  --panel-alt:#292638;
 
-  --border:#665b3c;
-  --border-soft:#463f2b;
-  --border-bright:#9b8448;
+  --border:#514965;
+  --border-soft:#3b384c;
+  --border-bright:#80739b;
 
-  --wood-dark:#18170f;
-  --wood:#29261b;
-  --wood-light:#3a3524;
+  --wood-dark:#12131d;
+  --wood:#211f2b;
+  --wood-light:#302d3d;
 
-  --green:#526b45;
-  --green-dark:#354832;
-  --green-deep:#273526;
-  --green-light:#789162;
-  --green-pale:#d6dcc6;
+  --green:#56664f;
+  --green-dark:#394536;
+  --green-deep:#29352e;
+  --green-light:#788b6d;
+  --green-pale:#d4dac8;
 
   --gold:#c2a45c;
   --gold-dark:#806a37;
   --gold-light:#dfc77e;
   --gold-pale:#f0e4bb;
 
-  --magic:#6fa9c7;
-  --magic-dark:#3f708b;
-  --magic-light:#9bd2e6;
+  --magic:#78b6cf;
+  --magic-dark:#4d7897;
+  --magic-light:#a9d8e8;
 
-  --red:#9a5447;
-  --red-dark:#633a32;
+  --red:#a45f68;
+  --red-dark:#653e4a;
 
-  --text:#e4dcc5;
-  --text-light:#b6ad92;
-  --grey:#89816d;
-  --grey-dim:#625c4c;
+  --text:#e5dfd1;
+  --text-light:#bdb6aa;
+  --grey:#898697;
+  --grey-dim:#625f70;
 
-  --white:#f5efdd;
+  --white:#f7f1e3;
 
   --live:#79a866;
   --cached:#b58a4c;
@@ -43,19 +43,14 @@
   --radius-small:4px;
 
   --shadow-sm:
-    0 3px 10px rgba(0,0,0,.28);
+    0 3px 10px rgba(5,4,14,.35);
 
   --shadow:
-    0 8px 25px rgba(0,0,0,.38);
+    0 8px 25px rgba(4,3,12,.48);
 
   --shadow-gold:
-    0 7px 22px rgba(174,139,61,.18);
+    0 7px 22px rgba(194,164,92,.18);
 }
-
-
-/* =========================================================
-   BASE
-   ========================================================= */
 
 *{
   box-sizing:border-box;
@@ -65,7 +60,7 @@
 
 html{
   min-height:100%;
-  background:#12120e;
+  background:#10101c;
 }
 
 body{
@@ -74,20 +69,25 @@ body{
 
   background:
     radial-gradient(
-      circle at 50% -10%,
-      rgba(114,101,57,.20),
-      transparent 35%
+      circle at 50% -8%,
+      rgba(174,112,177,.20),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 100% 30%,
+      rgba(93,76,135,.18),
+      transparent 38%
     ),
     radial-gradient(
       circle at 0% 100%,
-      rgba(62,82,49,.16),
-      transparent 30%
+      rgba(61,72,108,.20),
+      transparent 35%
     ),
     linear-gradient(
       180deg,
-      #191812 0%,
-      #211f16 48%,
-      #15150f 100%
+      #181628 0%,
+      #211e31 45%,
+      #151625 100%
     );
 
   color:var(--text);
@@ -113,11 +113,6 @@ a{
   color:inherit;
 }
 
-
-/* =========================================================
-   MAIN SIDEBAR / FRAME
-   ========================================================= */
-
 .sidebar{
   width:100%;
   min-height:100vh;
@@ -128,20 +123,19 @@ a{
   background:
     linear-gradient(
       180deg,
-      rgba(39,37,26,.98),
-      rgba(31,30,21,.98) 48%,
-      rgba(25,24,17,.99)
+      rgba(38,35,52,.98),
+      rgba(31,30,44,.98) 48%,
+      rgba(20,21,31,.99)
     );
 
-  border:
-    1px solid #50482f;
+  border:1px solid #504960;
 
   border-radius:0;
 
   box-shadow:
     inset 0 0 0 1px rgba(194,164,92,.07),
-    inset 0 0 45px rgba(0,0,0,.18),
-    0 12px 35px rgba(0,0,0,.35);
+    inset 0 0 45px rgba(7,6,17,.25),
+    0 12px 35px rgba(5,4,14,.45);
 }
 
 .sidebar::before{
@@ -160,7 +154,7 @@ a{
   background:
     radial-gradient(
       circle,
-      rgba(193,163,89,.11),
+      rgba(193,143,184,.13),
       transparent 68%
     );
 
@@ -183,17 +177,12 @@ a{
   background:
     radial-gradient(
       circle,
-      rgba(67,92,57,.13),
+      rgba(71,87,112,.16),
       transparent 70%
     );
 
   pointer-events:none;
 }
-
-
-/* =========================================================
-   DECORATIVE CORNERS
-   ========================================================= */
 
 .corner{
   position:absolute;
@@ -250,11 +239,6 @@ a{
   border-radius:0 0 2px 0;
 }
 
-
-/* =========================================================
-   VISIBILITY / ANIMATIONS
-   ========================================================= */
-
 .hidden,
 .page.hidden{
   display:none !important;
@@ -300,11 +284,6 @@ a{
   }
 }
 
-
-/* =========================================================
-   BANNER
-   ========================================================= */
-
 .banner-wrap{
   position:relative;
 
@@ -316,9 +295,9 @@ a{
   background:
     linear-gradient(
       135deg,
-      #343c2b,
-      #51462d 55%,
-      #2d3025
+      #403750,
+      #76516e 55%,
+      #30334b
     );
 
   border-bottom:
@@ -334,9 +313,9 @@ a{
   display:block;
 
   filter:
-    saturate(.82)
-    contrast(1.08)
-    brightness(.72);
+    saturate(.95)
+    contrast(1.04)
+    brightness(.78);
 }
 
 .banner-fade{
@@ -346,10 +325,10 @@ a{
   background:
     linear-gradient(
       180deg,
-      rgba(8,9,6,.08) 0%,
-      rgba(16,15,10,.18) 32%,
-      rgba(24,22,14,.68) 70%,
-      rgba(27,25,17,1) 100%
+      rgba(13,12,25,.03) 0%,
+      rgba(21,18,34,.12) 32%,
+      rgba(25,22,38,.58) 70%,
+      rgba(25,23,37,.98) 100%
     );
 }
 
@@ -361,12 +340,12 @@ a{
   top:18px;
   right:23px;
 
-  color:rgba(220,197,124,.82);
+  color:rgba(232,202,137,.88);
 
   font-size:17px;
 
   text-shadow:
-    0 0 9px rgba(211,181,91,.55);
+    0 0 9px rgba(213,151,198,.55);
 
   animation:sparkle 3s ease-in-out infinite;
 }
@@ -379,17 +358,12 @@ a{
   top:48px;
   right:60px;
 
-  color:rgba(210,192,133,.6);
+  color:rgba(210,180,215,.68);
 
   font-size:12px;
 
   animation:sparkle 2.4s .5s ease-in-out infinite;
 }
-
-
-/* =========================================================
-   BANNER CONTENT
-   ========================================================= */
 
 .banner-content{
   position:absolute;
@@ -418,13 +392,13 @@ a{
   background:
     linear-gradient(
       145deg,
-      #413b28,
-      #211f16
+      #4a4050,
+      #1c1b29
     );
 
   box-shadow:
-    0 5px 16px rgba(0,0,0,.4),
-    0 0 0 3px rgba(28,27,19,.78),
+    0 5px 16px rgba(0,0,0,.45),
+    0 0 0 3px rgba(25,23,36,.78),
     inset 0 0 12px rgba(194,164,92,.12);
 
   flex-shrink:0;
@@ -453,7 +427,7 @@ a{
 .banner-text .sub{
   font-size:9px;
 
-  color:#b6ad91;
+  color:#bdb1c4;
 
   letter-spacing:2px;
 
@@ -464,11 +438,6 @@ a{
   text-shadow:
     0 1px 4px #000;
 }
-
-
-/* =========================================================
-   STATUS
-   ========================================================= */
 
 .status-row{
   display:flex;
@@ -515,7 +484,7 @@ a{
 
   letter-spacing:1.7px;
 
-  color:#918a76;
+  color:#9891a3;
 
   text-transform:uppercase;
 
@@ -526,11 +495,6 @@ a{
 
   font-weight:600;
 }
-
-
-/* =========================================================
-   CALENDAR BUTTON
-   ========================================================= */
 
 .calendar-btn{
   display:flex;
@@ -547,14 +511,14 @@ a{
   background:
     linear-gradient(
       135deg,
-      #393527,
-      #29271c
+      #3c3749,
+      #292735
     );
 
   border:
-    1px solid #62583a;
+    1px solid #5e536d;
 
-  color:#d0bd82;
+  color:#d4bd7e;
 
   padding:10px 16px;
 
@@ -562,7 +526,7 @@ a{
 
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,.035),
-    0 4px 10px rgba(0,0,0,.25);
+    0 4px 10px rgba(0,0,0,.3);
 
   transition:.2s ease;
 
@@ -609,8 +573,8 @@ a{
   background:
     linear-gradient(
       135deg,
-      #45402e,
-      #302e20
+      #494155,
+      #312e40
     );
 
   box-shadow:var(--shadow-gold);
@@ -620,7 +584,7 @@ a{
   background:
     linear-gradient(
       135deg,
-      #7f6a3b,
+      #806a3d,
       #a28749
     );
 
@@ -638,11 +602,6 @@ a{
     0 2px 6px rgba(0,0,0,.25);
 }
 
-
-/* =========================================================
-   SECTION LABELS
-   ========================================================= */
-
 .section-label{
   padding:17px 18px 9px;
 
@@ -650,7 +609,7 @@ a{
 
   letter-spacing:2px;
 
-  color:#9e9274;
+  color:#a99db5;
 
   text-transform:uppercase;
 
@@ -676,7 +635,7 @@ a{
 
   background:none;
 
-  color:#b99b55;
+  color:#c1a45d;
 
   font-size:6px;
 
@@ -693,15 +652,10 @@ a{
   background:
     linear-gradient(
       90deg,
-      #5b5137,
+      #5b526a,
       transparent
     );
 }
-
-
-/* =========================================================
-   NEWEST MEMBERS
-   ========================================================= */
 
 .newest-list{
   padding:0 14px;
@@ -723,12 +677,12 @@ a{
   background:
     linear-gradient(
       135deg,
-      #302e22,
-      #25241b
+      #302d3d,
+      #252432
     );
 
   border:
-    1px solid #433d2b;
+    1px solid #403c50;
 
   border-radius:4px;
 
@@ -763,27 +717,28 @@ a{
   background:
     linear-gradient(
       180deg,
-      #b69853,
-      #526b45
+      #c09d59,
+      #65785d,
+      #80688c
     );
 
-  opacity:.7;
+  opacity:.8;
 }
 
 .newest-row:hover{
-  border-color:#76663f;
+  border-color:#756783;
 
   background:
     linear-gradient(
       135deg,
-      #3a3728,
-      #2c2b20
+      #3a3549,
+      #2c2a3c
     );
 
   transform:translateX(3px);
 
   box-shadow:
-    0 5px 15px rgba(0,0,0,.32);
+    0 5px 15px rgba(0,0,0,.4);
 }
 
 .newest-row img{
@@ -795,7 +750,7 @@ a{
   border:
     1px solid #8b7546;
 
-  background:#242319;
+  background:#242333;
 
   flex-shrink:0;
 
@@ -816,13 +771,13 @@ a{
 
   white-space:nowrap;
 
-  color:#ddd4bc;
+  color:#ddd8cd;
 }
 
 .newest-row .njoined{
   font-size:9px;
 
-  color:#9eaa83;
+  color:#9cab8e;
 
   font-family:
     'Cinzel',
@@ -839,31 +794,26 @@ a{
 .newest-empty{
   font-size:11px;
 
-  color:#817a68;
+  color:#817c8d;
 
   padding:4px;
 }
-
-
-/* =========================================================
-   STATS
-   ========================================================= */
 
 .stats{
   display:grid;
 
   grid-template-columns:1fr 1fr;
 
-  border-top:1px solid #443e2c;
-  border-bottom:1px solid #443e2c;
+  border-top:1px solid #443e52;
+  border-bottom:1px solid #443e52;
 
   margin-top:13px;
 
   background:
     linear-gradient(
       90deg,
-      rgba(67,82,51,.18),
-      rgba(132,106,53,.12)
+      rgba(67,82,61,.16),
+      rgba(132,106,116,.12)
     );
 }
 
@@ -872,7 +822,7 @@ a{
 }
 
 .stat:first-child{
-  border-right:1px solid #443e2c;
+  border-right:1px solid #443e52;
 }
 
 .stat-label{
@@ -880,7 +830,7 @@ a{
 
   letter-spacing:1.5px;
 
-  color:#918a77;
+  color:#9791a0;
 
   text-transform:uppercase;
 
@@ -902,7 +852,7 @@ a{
 
   font-size:22px;
 
-  color:#c6a960;
+  color:#c9ad68;
 
   margin-top:5px;
 
@@ -917,15 +867,10 @@ a{
 
   line-height:1.35;
 
-  color:#8da279;
+  color:#8fa582;
 
   text-shadow:none;
 }
-
-
-/* =========================================================
-   LINKS
-   ========================================================= */
 
 .links{
   max-height:168px;
@@ -946,7 +891,7 @@ a{
 }
 
 .links::-webkit-scrollbar-thumb{
-  background:#5c543b;
+  background:#5c536b;
 
   border-radius:2px;
 }
@@ -965,12 +910,12 @@ a{
   background:
     linear-gradient(
       135deg,
-      #302e22,
-      #25241b
+      #302d3d,
+      #252432
     );
 
   border:
-    1px solid #433d2b;
+    1px solid #403c50;
 
   border-radius:4px;
 
@@ -978,7 +923,7 @@ a{
 
   text-decoration:none;
 
-  color:#d8d0b9;
+  color:#d8d2c5;
 
   font-size:12px;
 
@@ -990,19 +935,19 @@ a{
 }
 
 .link-btn:hover{
-  border-color:#78673f;
+  border-color:#786887;
 
   background:
     linear-gradient(
       135deg,
-      #3b3828,
-      #2b2a1f
+      #3b3649,
+      #2b293c
     );
 
   transform:translateX(3px);
 
   box-shadow:
-    0 5px 14px rgba(0,0,0,.3);
+    0 5px 14px rgba(0,0,0,.4);
 }
 
 .link-btn .lname{
@@ -1022,8 +967,8 @@ a{
   background:
     linear-gradient(
       145deg,
-      #47412d,
-      #29281d
+      #474052,
+      #292735
     );
 
   display:flex;
@@ -1036,13 +981,13 @@ a{
   flex-shrink:0;
 
   border:
-    1px solid #62563a;
+    1px solid #62566f;
 
   color:#c1a45e;
 }
 
 .link-btn .arrow{
-  color:#817862;
+  color:#81798b;
 
   font-size:14px;
 
@@ -1055,13 +1000,8 @@ a{
   transform:translateX(3px);
 }
 
-
-/* =========================================================
-   LEADERSHIP
-   ========================================================= */
-
 .leadership{
-  border-top:1px solid #443e2c;
+  border-top:1px solid #443e52;
 
   padding-bottom:19px;
 
@@ -1082,13 +1022,13 @@ a{
   background:
     linear-gradient(
       145deg,
-      #393527 0%,
-      #2d2b20 55%,
-      #25241a 100%
+      #393548 0%,
+      #2d2b3e 55%,
+      #252438 100%
     );
 
   border:
-    1px solid #675a3b;
+    1px solid #675c73;
 
   border-radius:5px;
 
@@ -1124,7 +1064,7 @@ a{
     radial-gradient(
       circle,
       rgba(190,160,86,.16),
-      rgba(72,94,58,.06) 48%,
+      rgba(137,101,150,.07) 48%,
       transparent 70%
     );
 
@@ -1157,10 +1097,10 @@ a{
   border:2px solid #ded0a5;
 
   box-shadow:
-    0 0 0 2px #66583a,
+    0 0 0 2px #665a70,
     0 5px 18px rgba(0,0,0,.4);
 
-  background:#29271d;
+  background:#292738;
 }
 
 .card .uname{
@@ -1230,7 +1170,7 @@ a{
 
   font-size:10px;
 
-  color:#99917d;
+  color:#9993a2;
 
   display:flex;
 
@@ -1248,11 +1188,11 @@ a{
 
   font-size:10.5px;
 
-  color:#83a4a9;
+  color:#83b2c0;
 
   text-decoration:none;
 
-  border-bottom:1px solid rgba(131,164,169,.3);
+  border-bottom:1px solid rgba(131,178,192,.3);
 
   padding-bottom:1px;
 
@@ -1260,15 +1200,10 @@ a{
 }
 
 .card a.profile-link:hover{
-  color:#a9cbd0;
+  color:#a9d5dc;
 
-  border-color:#a9cbd0;
+  border-color:#a9d5dc;
 }
-
-
-/* =========================================================
-   CAROUSEL
-   ========================================================= */
 
 .carousel-controls{
   display:flex;
@@ -1288,13 +1223,13 @@ a{
 
   border-radius:4px;
 
-  border:1px solid #63583c;
+  border:1px solid #635972;
 
   background:
     linear-gradient(
       145deg,
-      #393628,
-      #29281e
+      #393548,
+      #292735
     );
 
   color:#bca264;
@@ -1319,7 +1254,7 @@ a{
 
   color:#e0c77d;
 
-  background:#3e3a29;
+  background:#403b4d;
 
   transform:scale(1.05);
 }
@@ -1336,7 +1271,7 @@ a{
 
   font-size:10px;
 
-  color:#8e856e;
+  color:#91899d;
 
   letter-spacing:.7px;
 
@@ -1344,11 +1279,6 @@ a{
 
   text-align:center;
 }
-
-
-/* =========================================================
-   CALENDAR
-   ========================================================= */
 
 .cal-header{
   display:flex;
@@ -1397,7 +1327,7 @@ a{
 
   font-size:11px;
 
-  color:#a49a80;
+  color:#a49bab;
 
   min-width:130px;
 
@@ -1417,7 +1347,7 @@ a{
 .cal-weekday{
   font-size:8px;
 
-  color:#807865;
+  color:#837c8f;
 
   text-align:center;
 
@@ -1449,11 +1379,11 @@ a{
   background:
     linear-gradient(
       145deg,
-      #302f23,
-      #29281e
+      #302e3f,
+      #292838
     );
 
-  border:1px solid #3d3929;
+  border:1px solid #3f3b4e;
 
   position:relative;
 
@@ -1471,9 +1401,9 @@ a{
 }
 
 .cal-day:not(.empty):hover{
-  border-color:#79673e;
+  border-color:#796a82;
 
-  background:#393628;
+  background:#39354a;
 
   transform:scale(1.02);
 }
@@ -1481,7 +1411,7 @@ a{
 .cal-day .day-num{
   font-size:9px;
 
-  color:#918872;
+  color:#938b9b;
 
   text-align:right;
 
@@ -1502,8 +1432,8 @@ a{
   background:
     linear-gradient(
       145deg,
-      #3c3928,
-      #302f23
+      #3c3849,
+      #302e40
     );
 
   box-shadow:
@@ -1514,8 +1444,8 @@ a{
   background:
     linear-gradient(
       145deg,
-      #627453,
-      #45563b
+      #637454,
+      #46583e
     );
 
   border-color:#9caf80;
@@ -1540,7 +1470,7 @@ a{
   background:
     rgba(105,158,179,.18);
 
-  color:#8fc0cf;
+  color:#8fc8d9;
 
   text-decoration:none;
 
@@ -1570,7 +1500,7 @@ a{
 .evt-more{
   font-size:7px;
 
-  color:#89816d;
+  color:#898294;
 
   text-align:left;
 
@@ -1593,11 +1523,6 @@ a{
     0 0 5px rgba(117,178,197,.55);
 }
 
-
-/* =========================================================
-   AGENDA
-   ========================================================= */
-
 .agenda-filter{
   display:flex;
 
@@ -1609,7 +1534,7 @@ a{
 
   font-size:10px;
 
-  color:#8d856f;
+  color:#91899b;
 }
 
 .agenda-filter button{
@@ -1659,12 +1584,12 @@ a{
   background:
     linear-gradient(
       135deg,
-      #302e22,
-      #27261c
+      #302d3d,
+      #272638
     );
 
   border:
-    1px solid #433d2b;
+    1px solid #403c50;
 
   border-radius:4px;
 
@@ -1676,13 +1601,13 @@ a{
 }
 
 .agenda-item:hover{
-  border-color:#77653e;
+  border-color:#776681;
 
   background:
     linear-gradient(
       135deg,
-      #393628,
-      #2b2a1f
+      #393548,
+      #2b293c
     );
 
   transform:translateX(2px);
@@ -1728,7 +1653,7 @@ a{
 
   border-radius:3px;
 
-  background:#373427;
+  background:#373447;
 
   color:#91ae7a;
 
@@ -1740,13 +1665,8 @@ a{
 .agenda-date{
   font-size:10px;
 
-  color:#89816e;
+  color:#898394;
 }
-
-
-/* =========================================================
-   SEARCH
-   ========================================================= */
 
 .search-row{
   display:flex;
@@ -1762,18 +1682,18 @@ a{
   background:
     linear-gradient(
       135deg,
-      #302f23,
-      #26251c
+      #302e3f,
+      #262535
     );
 
   border:
-    1px solid #4a4430;
+    1px solid #4a4357;
 
   border-radius:4px;
 
   padding:9px 11px;
 
-  color:#ddd4bb;
+  color:#ddd8cc;
 
   font-size:12px;
 
@@ -1790,14 +1710,14 @@ a{
 .search-input:focus{
   border-color:#8d7747;
 
-  background:#343227;
+  background:#343142;
 
   box-shadow:
     0 0 0 3px rgba(155,132,72,.08);
 }
 
 .search-input::placeholder{
-  color:#77705e;
+  color:#777286;
 }
 
 .search-btn{
@@ -1870,24 +1790,19 @@ a{
   color:#80a66b;
 }
 
-
-/* =========================================================
-   SPOTLIGHT
-   ========================================================= */
-
 .spotlight-card{
   margin:0 18px;
 
   background:
     linear-gradient(
       135deg,
-      #393528 0%,
-      #2f2d21 58%,
-      #28271d 100%
+      #393548 0%,
+      #2f2d41 58%,
+      #282737 100%
     );
 
   border:
-    1px solid #64583b;
+    1px solid #645873;
 
   border-radius:5px;
 
@@ -1951,10 +1866,10 @@ a{
   border:2px solid #d2c28f;
 
   box-shadow:
-    0 0 0 2px #62563a,
+    0 0 0 2px #625673,
     0 4px 13px rgba(0,0,0,.35);
 
-  background:#29281e;
+  background:#292738;
 
   flex-shrink:0;
 }
@@ -1981,7 +1896,7 @@ a{
 .spotlight-meta{
   font-size:10px;
 
-  color:#8e8774;
+  color:#8e8999;
 
   margin-top:2px;
 }
@@ -1989,7 +1904,7 @@ a{
 .spotlight-link{
   font-size:10px;
 
-  color:#7ca8ad;
+  color:#7caeba;
 
   text-decoration:none;
 
@@ -1999,7 +1914,7 @@ a{
 }
 
 .spotlight-link:hover{
-  color:#a4cbd0;
+  color:#a4d3da;
 }
 
 .shuffle-btn{
@@ -2008,13 +1923,13 @@ a{
 
   border-radius:4px;
 
-  border:1px solid #5e5439;
+  border:1px solid #5e536c;
 
   background:
     linear-gradient(
       145deg,
-      #3b382a,
-      #29281e
+      #3b3749,
+      #292735
     );
 
   color:#b99d5b;
@@ -2039,7 +1954,7 @@ a{
 
   color:#ddc67e;
 
-  background:#403c2b;
+  background:#403b4d;
 
   transform:rotate(8deg);
 }
@@ -2058,17 +1973,12 @@ a{
   }
 }
 
-
-/* =========================================================
-   RECORD
-   ========================================================= */
-
 .record-wrap{
   padding:14px 18px;
 
-  border-top:1px solid #443e2c;
+  border-top:1px solid #443e52;
 
-  border-bottom:1px solid #443e2c;
+  border-bottom:1px solid #443e52;
 }
 
 .record-title{
@@ -2097,11 +2007,11 @@ a{
 }
 
 .record-figures .l{
-  color:#b96f64;
+  color:#b96f6d;
 }
 
 .record-figures .d{
-  color:#928a76;
+  color:#928a9a;
 }
 
 .record-bar{
@@ -2113,9 +2023,9 @@ a{
 
   display:flex;
 
-  background:#3a382b;
+  background:#3a3748;
 
-  border:1px solid #48422f;
+  border:1px solid #48425a;
 }
 
 .record-bar div{
@@ -2125,13 +2035,8 @@ a{
 .record-empty{
   font-size:11px;
 
-  color:#817a68;
+  color:#817b8b;
 }
-
-
-/* =========================================================
-   INSTAGRAM / SOCIAL
-   ========================================================= */
 
 .insta-card{
   margin:0 18px;
@@ -2139,12 +2044,12 @@ a{
   background:
     linear-gradient(
       135deg,
-      #332f27,
-      #28271e
+      #342f3e,
+      #282738
     );
 
   border:
-    1px solid #514936;
+    1px solid #51495e;
 
   border-radius:5px;
 
@@ -2179,25 +2084,25 @@ a{
   background:
     radial-gradient(
       circle at 100% 0%,
-      rgba(155,83,70,.14),
+      rgba(155,83,126,.14),
       transparent 55%
     );
 }
 
 .insta-card:hover{
-  border-color:#805e51;
+  border-color:#805e71;
 
   background:
     linear-gradient(
       135deg,
-      #3b342b,
-      #2b2920
+      #3b3444,
+      #2b293b
     );
 
   transform:translateY(-1px);
 
   box-shadow:
-    0 7px 19px rgba(0,0,0,.28);
+    0 7px 19px rgba(0,0,0,.36);
 }
 
 .insta-avatar{
@@ -2208,11 +2113,11 @@ a{
 
   object-fit:cover;
 
-  background:#29281e;
+  background:#292738;
 
   flex-shrink:0;
 
-  border:1px solid #62573d;
+  border:1px solid #625773;
 }
 
 .insta-info{
@@ -2237,7 +2142,7 @@ a{
 .insta-sub{
   font-size:10px;
 
-  color:#87806d;
+  color:#878090;
 
   margin-top:2px;
 }
@@ -2273,11 +2178,6 @@ a{
   font-weight:700;
 }
 
-
-/* =========================================================
-   DISCORD
-   ========================================================= */
-
 .discord-btn{
   margin:0 18px;
 
@@ -2290,13 +2190,13 @@ a{
   background:
     linear-gradient(
       135deg,
-      #4e5e68 0%,
-      #46515a 48%,
-      #514d55 100%
+      #4d5268 0%,
+      #464d60 48%,
+      #514b5e 100%
     );
 
   border:
-    1px solid #71808a;
+    1px solid #70798d;
 
   border-radius:5px;
 
@@ -2347,7 +2247,7 @@ a{
 .discord-btn:hover{
   transform:translateY(-2px);
 
-  border-color:#8998a0;
+  border-color:#8998a8;
 
   box-shadow:
     0 12px 28px -7px rgba(0,0,0,.55);
@@ -2399,11 +2299,6 @@ a{
   color:rgba(255,255,255,.75);
 }
 
-
-/* =========================================================
-   TRENDING ANIME PAGE
-   ========================================================= */
-
 #pageTrendingAnime{
   width:100%;
 
@@ -2447,15 +2342,15 @@ a{
   margin:0 !important;
 
   border:
-    1px solid #665b3d !important;
+    1px solid #665b73 !important;
 
   border-radius:4px !important;
 
   background:
     linear-gradient(
       145deg,
-      #3b3829,
-      #29281e
+      #3b3749,
+      #292735
     ) !important;
 
   color:#c1a35e !important;
@@ -2473,7 +2368,7 @@ a{
   cursor:pointer;
 
   box-shadow:
-    0 4px 11px rgba(0,0,0,.28) !important;
+    0 4px 11px rgba(0,0,0,.32) !important;
 
   transition:.18s ease;
 }
@@ -2482,8 +2377,8 @@ a{
   background:
     linear-gradient(
       145deg,
-      #45402d,
-      #302f22
+      #454052,
+      #302e40
     ) !important;
 
   border-color:#8d7645 !important;
@@ -2528,13 +2423,13 @@ a{
   background:
     linear-gradient(
       135deg,
-      #332f25 0%,
-      #2c2b20 62%,
-      #28271d 100%
+      #332f41 0%,
+      #2c2a3b 62%,
+      #272637 100%
     );
 
   border:
-    1px solid #48412f;
+    1px solid #484258;
 
   border-radius:5px;
 
@@ -2545,7 +2440,7 @@ a{
   transition:.2s ease;
 
   box-shadow:
-    0 5px 15px rgba(0,0,0,.28);
+    0 5px 15px rgba(5,4,14,.38);
 
   position:relative;
 
@@ -2566,12 +2461,12 @@ a{
   background:
     linear-gradient(
       180deg,
-      #b99b54,
-      #667b54,
-      #4b6570
+      #d0ad62,
+      #8d718f,
+      #587895
     );
 
-  opacity:.7;
+  opacity:.75;
 
   transition:.2s ease;
 }
@@ -2595,17 +2490,17 @@ a{
   background:
     linear-gradient(
       135deg,
-      #3c382a,
-      #343226 58%,
-      #2b2a20
+      #40394d,
+      #343146 58%,
+      #2a2939
     );
 
-  border-color:#75643f;
+  border-color:#756785;
 
   transform:translateY(-2px);
 
   box-shadow:
-    0 9px 23px rgba(0,0,0,.4);
+    0 9px 23px rgba(0,0,0,.45);
 }
 
 .anime-trending-page .anime-card:hover::before{
@@ -2621,7 +2516,7 @@ a{
 }
 
 .anime-trending-page .anime-rank{
-  color:#b99c59;
+  color:#c0a05d;
 
   font-family:
     'Cinzel',
@@ -2650,10 +2545,10 @@ a{
 
   border:2px solid #b5a26c;
 
-  background:#29281d;
+  background:#292738;
 
   box-shadow:
-    0 0 0 1px #514831,
+    0 0 0 1px #51485e,
     0 5px 12px rgba(0,0,0,.4);
 }
 
@@ -2662,7 +2557,7 @@ a{
 }
 
 .anime-trending-page .anime-title{
-  color:#dfd3b5;
+  color:#dfd7c4;
 
   font-size:16px;
 
@@ -2680,7 +2575,7 @@ a{
 .anime-trending-page .anime-score{
   margin-top:8px;
 
-  color:#9c927a;
+  color:#a098aa;
 
   font-family:
     'Cinzel',
@@ -2698,26 +2593,21 @@ a{
   background:
     linear-gradient(
       135deg,
-      #302e22,
-      #27261c
+      #302d3d,
+      #272638
     );
 
   border:
-    1px solid #443e2c;
+    1px solid #443e52;
 
   border-radius:4px;
 
-  color:#908873;
+  color:#90899b;
 
   font-size:12px;
 
   text-align:center;
 }
-
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
 
 @media (max-width:520px){
 
@@ -2829,11 +2719,6 @@ a{
   }
 }
 
-
-/* =========================================================
-   FOCUS / SELECTION
-   ========================================================= */
-
 button:focus-visible,
 a:focus-visible,
 input:focus-visible{
@@ -2844,7 +2729,7 @@ input:focus-visible{
 }
 
 ::selection{
-  background:#76633c;
+  background:#76638a;
 
   color:#fff1c9;
 }
